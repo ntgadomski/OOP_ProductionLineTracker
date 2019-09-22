@@ -20,7 +20,7 @@ public class Controller {
   @FXML private Button record;
 
   /**
-   *  Handles action when button is clicked Outputs to console.
+   * Handles action when button is clicked Outputs to console.
    *
    * @param event MouseEvent Object
    */

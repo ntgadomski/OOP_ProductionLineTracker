@@ -7,6 +7,8 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -40,6 +42,12 @@
                             </children>
                         </GridPane>
                         <Button fx:id="addProduct" layoutX="14.0" layoutY="222.0" mnemonicParsing="false" onMouseClicked="#printOutput" prefHeight="25.0" prefWidth="192.0" text="Add Poduct" />
+                  <TableView layoutX="6.0" layoutY="256.0" prefHeight="115.0" prefWidth="591.0">
+                    <columns>
+                      <TableColumn prefWidth="75.0" text="C1" />
+                      <TableColumn prefWidth="75.0" text="C2" />
+                    </columns>
+                  </TableView>
                     </children>
                 </AnchorPane>
             </content>
