@@ -15,13 +15,13 @@ import javafx.scene.input.MouseEvent;
 /** Controller Class Handles the the outputs of buttons and connects database. */
 public class Controller {
 
-  static final String jdbc_driver = "org.h2.Driver";
-  static final String DB_url = "jdbc:h2:./res/Products";
+  private static final String jdbc_driver = "org.h2.Driver";
+  private static final String DB_url = "jdbc:h2:./res/Products";
 
-  static final String user = "";
-  static final String pass = "";
-  Connection conn = null;
-  Statement stmt = null;
+  private static final String user = "";
+  private static final String pass = "";
+  private Connection conn = null;
+  private Statement stmt = null;
 
   /** Method that starts the connection between the controller and the database. */
   public void initialize() {
