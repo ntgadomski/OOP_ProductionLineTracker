@@ -1,15 +1,55 @@
 package sample;
 
-import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
-import javafx.event.ActionEvent;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.input.MouseEvent;
-import org.w3c.dom.ls.LSOutput;
+// import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
+// import javafx.event.ActionEvent;
+// import org.w3c.dom.ls.LSOutput;
 
-/** Controller Class Handles the the outputs of buttons. */
+/** Controller Class Handles the the outputs of buttons and connects database. */
 public class Controller {
+
+  static final String jdbc_driver = "org.h2.Driver";
+  static final String DB_url = "jdbc:h2:./res/Products";
+
+  static final String user = "";
+  static final String pass = "";
+  Connection conn = null;
+  Statement stmt = null;
+
+  /** Method that starts the connection between the controller and the database. */
+  public void initialize() {
+    try {
+      Class.forName(jdbc_driver);
+      conn = DriverManager.getConnection(DB_url, user, pass);
+      stmt = conn.createStatement();
+      System.out.println("Database Connection Established.");
+
+      /*
+      String sql = "SELECT * FROM JOBS";
+
+      ResultSet rs = stmt.executeQuery(sql);
+      while (rs.next()) {
+        System.out.println(rs.getString(1));
+      }
+
+       */
+      stmt.close();
+      conn.close();
+
+    } catch (ClassNotFoundException e) {
+      e.printStackTrace();
+
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+  }
 
   @FXML private ComboBox<Integer> comboBox;
 
@@ -46,11 +86,13 @@ public class Controller {
    * @param event MouseEvent object
    */
   @FXML
-  void list(MouseEvent event) {}
+  void list(MouseEvent event) {
+    //
+  }
 
   /** Method to start the comboBox. */
   @FXML
-  public void initialize() {
+  public void combo() {
     comboBox.setEditable(true);
     comboBox.getItems().add(1);
     comboBox.getItems().add(2);

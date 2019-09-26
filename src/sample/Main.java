@@ -6,11 +6,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
-
 /**
  * /** Production Line Tracker Project used with a database to help with organizing
  * products. @Author Nickolas Gadomski
@@ -39,38 +34,8 @@ public class Main extends Application {
    *
    * @param args standard parameter
    */
-  public static void main(String[] args) {
-    final String JDBC_DRIVER = "org.h2.Driver";
-    final String DB_URL = "jdbc:h2:./res/HR";
-
-    final String USER = "";
-    final String PASS = "";
-    Connection conn = null;
-    Statement stmt = null;
-
-    try {
-      Class.forName(JDBC_DRIVER);
-      conn = DriverManager.getConnection(DB_URL, USER, PASS);
-      stmt = conn.createStatement();
-      System.out.println("Database Connection Established.");
-
-      /*
-      String sql = "SELECT * FROM JOBS";
-
-      ResultSet rs = stmt.executeQuery(sql);
-      while (rs.next()) {
-        System.out.println(rs.getString(1));
-      }
-
-       */
-      stmt.close();
-      conn.close();
-    } catch (ClassNotFoundException e) {
-      e.printStackTrace();
-
-    } catch (SQLException e) {
-      e.printStackTrace();
-    }
+  public static void main(
+      String[] args) { // Driver not found go into project structure and find H2 Driver
 
     launch(args);
   }
