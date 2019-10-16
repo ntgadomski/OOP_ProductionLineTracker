@@ -1,4 +1,4 @@
-package sample;
+package ProductionLineTracker_OOP;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.input.MouseEvent;
 // import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
@@ -13,7 +14,7 @@ import javafx.scene.input.MouseEvent;
 // import org.w3c.dom.ls.LSOutput;
 
 /** Controller Class Handles the the outputs of buttons and connects database. */
-public class Controller {
+public class ProductionLine_Controller {
 
   private static final String jdbc_driver = "org.h2.Driver";
   private static final String DB_url = "jdbc:h2:./res/Products";
@@ -53,6 +54,8 @@ public class Controller {
 
   @FXML private ComboBox<Integer> comboBox;
 
+  @FXML private ChoiceBox<String> choiceBox;
+
   /** add product button on production line tab. */
   @FXML private Button addProduct;
 
@@ -80,16 +83,6 @@ public class Controller {
     System.out.println("Recorded");
   }
 
-  /**
-   * Handles action when comboBox is clicked.
-   *
-   * @param event MouseEvent object
-   */
-  @FXML
-  void list(MouseEvent event) {
-    //
-  }
-
   /** Method to start the comboBox. */
   @FXML
   public void combo() {
@@ -105,5 +98,15 @@ public class Controller {
     comboBox.getItems().add(9);
     comboBox.getItems().add(10);
     comboBox.getSelectionModel().selectFirst();
+
+    for (ItemType item : ItemType.values()) {
+      choiceBox.getItems().add(item + "" + item.code);
+    }
+  }
+
+  @FXML
+  void choice(MouseEvent event) {
   }
 }
+
+
