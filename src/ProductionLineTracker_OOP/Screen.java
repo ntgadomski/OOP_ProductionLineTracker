@@ -1,28 +1,58 @@
 package ProductionLineTracker_OOP;
 
+/**
+ * Screen class implements ScreenSpec class fields to create a screen
+ * @Author: Nickolas Gadomski
+ */
 public class Screen implements ScreenSpec {
     private String resolution;
-    private int refreshrate;
-    private int responsetime;
+    private int refreshRate;
+    private int responseTime;
 
-    public Screen(String resolution, int refreshrate, int responsetime){
+    /**
+     * Constructor creates screen using local variables as parameters
+     * @param resolution String resolution
+     * @param refreshRate integer refreshRate
+     * @param responseTme integer responseTime
+     */
+    public Screen(String resolution, int refreshRate, int responseTme){
         this.resolution = resolution;
-        this.refreshrate = refreshrate;
-        this.responsetime = responsetime;
+        this.refreshRate = refreshRate;
+        this.responseTime = responseTime;
     }
-    
+
+    /**
+     * Accessor for local resolution field
+     * @return String resolution
+     */
     public String getResolution(){
         return resolution;
     }
+
+    /**
+     * Accessor for local refresh rate field
+     * @return integer refreshRate
+     */
     public int getRefreshRate(){
-        return refreshrate;
+        return refreshRate;
     }
+
+    /**
+     * Accessor for local response time field
+     * @return integer responseTime
+     */
     public int getResponseTime(){
-        return responsetime;
+        return responseTime;
     }
+
+    /**
+     * Format String method
+     *
+     * @return the formatted String
+     */
     public String toString(){
         String str = String.format("\nResolution: %s\nRefresh Rate: %s\nResponse Time: %s",
-                resolution, refreshrate, responsetime);
+                resolution, refreshRate, responseTime);
         return str;
     }
 }

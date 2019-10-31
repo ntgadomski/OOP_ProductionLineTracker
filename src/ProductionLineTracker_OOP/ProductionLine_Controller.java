@@ -13,7 +13,9 @@ import javafx.scene.input.MouseEvent;
 // import javafx.event.ActionEvent;
 // import org.w3c.dom.ls.LSOutput;
 
-/** Controller Class Handles the the outputs of buttons and connects database. */
+/** Controller Class Handles the the outputs of buttons and connects database.
+ * @Author: Nickolas Gadomski
+ */
 public class ProductionLine_Controller {
 
   private static final String jdbc_driver = "org.h2.Driver";
@@ -25,7 +27,7 @@ public class ProductionLine_Controller {
   private Statement stmt = null;
 
   /** Method that starts the connection between the controller and the database. */
-  public void initialize() {
+  public void connDatabase() {
     try {
       Class.forName(jdbc_driver);
       conn = DriverManager.getConnection(DB_url, user, pass);
@@ -83,9 +85,9 @@ public class ProductionLine_Controller {
     System.out.println("Recorded");
   }
 
-  /** Method to start the comboBox. */
+  /** Method to start functionality. */
   @FXML
-  public void combo() {
+  public void initialized() {
     comboBox.setEditable(true);
     comboBox.getItems().add(1);
     comboBox.getItems().add(2);
@@ -99,8 +101,8 @@ public class ProductionLine_Controller {
     comboBox.getItems().add(10);
     comboBox.getSelectionModel().selectFirst();
 
-    for (ItemType item : ItemType.values()) {
-      choiceBox.getItems().add(item + "" + item.code);
+    for (ItemType itemFL : ItemType.values()) {
+      choiceBox.getItems().add(itemFL + "" + itemFL.item);
     }
   }
 
