@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="caf6ca15-e4fc-4816-8086-19548e43f39a" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="SET_USER_NAME_GLOBALLY" value="false" />
+    <option name="UPDATE_TYPE" value="MERGE" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/ProductionLineTracker_OOP/ProductionLine.fxml" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="C:\Users\spudn_000\OneDrive - Florida Gulf Coast University\COP 3003\OOP_ProductionLineTracker\.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectId" id="1R76HE0pz2tGAFp4Ir5kFArqoVd" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="C:/H2/bin/h2-1.4.199.jar!/" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\ntgadomski3779\OneDrive - Florida Gulf Coast University\COP 3003\OOP_ProductionLineTracker\src" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ProductionLineTracker_OOP.Main" />
+      <module name="OOP_ProductionLineTracker" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ProductionLineTracker_OOP.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="allServicesViewState">
+      <serviceView>
+        <treeState>
+          <expand>
+            <path>
+              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@e6a97675" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+            </path>
+          </expand>
+          <select />
+        </treeState>
+      </serviceView>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="caf6ca15-e4fc-4816-8086-19548e43f39a" name="Default Changelist" comment="" />
+      <created>1569005697998</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1569005697998</updated>
+      <workItem from="1569005700491" duration="8722000" />
+      <workItem from="1569014696764" duration="7020000" />
+      <workItem from="1569034644929" duration="2285000" />
+      <workItem from="1569084236078" duration="1630000" />
+      <workItem from="1569107490810" duration="2621000" />
+      <workItem from="1569116998620" duration="245000" />
+      <workItem from="1569119223095" duration="130000" />
+      <workItem from="1569119447663" duration="2017000" />
+      <workItem from="1569442816385" duration="8019000" />
+      <workItem from="1569461623219" duration="1821000" />
+      <workItem from="1571158132920" duration="3470000" />
+      <workItem from="1571162075087" duration="1770000" />
+      <workItem from="1571260863283" duration="4078000" />
+      <workItem from="1571266952394" duration="146000" />
+    </task>
+    <task id="LOCAL-00001" summary="Added Buttons, Database, and CSS file&#10;created layout with Scene Builder">
+      <created>1569021174451</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1569021174451</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Sprint 1 completed">
+      <created>1569109519732</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1569109519732</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Sprint 1 completed">
+      <created>1569109687854</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1569109687854</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Sprint 1 completed">
+      <created>1569109733688</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1569109733688</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Sprint 1 completed Database Connection Added">
+      <created>1569121345234</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1569121345234</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Sprint 1 completed">
+      <created>1569462072599</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1569462072599</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Sprint 1 completed">
+      <created>1569462671621</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1569462671621</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Sprint 1 completed">
+      <created>1569465518190</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1569465518190</updated>
+    </task>
+    <task id="LOCAL-00009" summary="sprint 2 update">
+      <created>1571267028450</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1571267028450</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Added Buttons, Database, and CSS file&#10;created layout with Scene Builder" />
+    <MESSAGE value="Sprint 1 completed Database Connection Added" />
+    <MESSAGE value="Sprint 1 completed" />
+    <MESSAGE value="sprint 2: week 8 completed" />
+    <MESSAGE value="sprint 2 update" />
+    <option name="LAST_COMMIT_MESSAGE" value="sprint 2 update" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/OOP_ProductionLineTracker$Main.ic" NAME="Main Coverage Results" MODIFIED="1569005755441" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>sample.*</FILTER>
+    </SUITE>
+  </component>
+</project>

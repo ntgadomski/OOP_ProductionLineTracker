@@ -1,4 +1,4 @@
-package ProductionLineTracker_OOP;
+package productionLineTracker_OOP;
 
 import java.util.Date;
 
@@ -70,7 +70,7 @@ public class ProductionRec {
   }
 
   /**
-   * Accessor for local productID field
+   * Accessor for local productID field.
    *
    * @return integer productID
    */
@@ -79,7 +79,7 @@ public class ProductionRec {
   }
 
   /**
-   * Mutator sets local Product ID field
+   * Mutator sets local Product ID field.
    *
    * @param productID integer product ID
    */
@@ -88,7 +88,7 @@ public class ProductionRec {
   }
 
   /**
-   * Accessor for local serial number field
+   * Accessor for local serial number field.
    *
    * @return String serialNum
    */
@@ -97,7 +97,7 @@ public class ProductionRec {
   }
 
   /**
-   * Mutator sets local serial number field
+   * Mutator sets local serial number field.
    *
    * @param serialNum String serialNum
    */
@@ -106,7 +106,7 @@ public class ProductionRec {
   }
 
   /**
-   * Accessor for local produced Date field
+   * Accessor for local produced Date field.
    *
    * @return Date prodDate
    */
@@ -115,7 +115,7 @@ public class ProductionRec {
   }
 
   /**
-   * Mutator sets local produced Date field
+   * Mutator sets local produced Date field.
    *
    * @param produceDate Date produceDate
    */
@@ -123,11 +123,11 @@ public class ProductionRec {
     this.produceDate = produceDate;
   }
 
-    /**
-     * Format String method
-     *
-     * @return the formatted String
-     */
+  /**
+   * Format String method.
+   *
+   * @return the formatted String
+   */
   public String toString() {
     return String.format(
         "Prod. Num: %s Product ID: %s Serial Num: %s Date: %s",
