@@ -11,8 +11,6 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-
-
 // import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
 // import javafx.event.ActionEvent;
 // import org.w3c.dom.ls.LSOutput;
@@ -58,8 +56,6 @@ public class ProductionLine_controller {
     }
   }
 
-
-
   /** List of FX identities used for functionality. */
   @FXML private ComboBox<Integer> cbShowProd;
 
@@ -104,7 +100,7 @@ public class ProductionLine_controller {
    */
   @FXML
   void addProduct(MouseEvent event) {
-    //productList.add(new Widget(tf_productName, tf_manufacturer, ));
+    // productList.add(new Widget(tf_productName, tf_manufacturer, ));
     lvChooseProduct.getItems().add(String.valueOf(productList));
     System.out.println("Product Added");
   }
