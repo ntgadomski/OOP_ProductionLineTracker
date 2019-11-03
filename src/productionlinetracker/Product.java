@@ -101,9 +101,7 @@ public abstract class Product implements Item {
    * @return the formatted String
    */
   public String toString() {
-    return "Name: " + name + "\n"
-            + "Manufacturer: " + manufacturer + "\n"
-            +  "Type: " + type;
+    return "Name: " + name + "\n" + "Manufacturer: " + manufacturer + "\n" + "Type: " + type;
   }
 }
 

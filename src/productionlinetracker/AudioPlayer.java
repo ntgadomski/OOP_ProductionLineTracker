@@ -78,7 +78,6 @@ public class AudioPlayer extends Product implements MultimediaControl {
     System.out.println("Next");
   }
 
-
   /**
    * Format String method
    *
