@@ -1,4 +1,4 @@
-package productionLineTracker_OOP;
+package productionlinetracker;
 /**
  * Audio player is a subclass of product class that gives detail for audio player type products.
  * Also utilizes media control class @Author: Nickolas Gadomski
@@ -84,10 +84,13 @@ public class AudioPlayer extends Product implements MultimediaControl {
    *
    * @return the formatted String
    */
+  /*
   public String toString() {
     return String.format(
         "%n Supported Audio Formats: %n Supported Playlist Formats: %n",
         super.toString(), this.audioSpecification, this.mediaType);
   }
+
+   */
 
 }

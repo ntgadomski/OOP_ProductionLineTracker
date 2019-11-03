@@ -1,31 +1,40 @@
-package productionLineTracker_OOP;
+package productionlinetracker;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
-import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-// import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
-// import javafx.event.ActionEvent;
-// import org.w3c.dom.ls.LSOutput;
-//
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
+
+import javafx.scene.control.ListView;
+
+import javafx.scene.control.TableColumn;
+
+import javafx.scene.control.TableView;
+
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
+
 /**
  * Controller Class Handles the the outputs of buttons and connects database. @Author: Nickolas
  * Gadomski
  */
-public class ProductionLine_controller {
+public class ProductionLineController {
 
-  private static final String jdbc_driver = "org.h2.Driver";
-  private static final String DB_url = "jdbc:h2:./res/Products";
+  private String jdbcDriver = "org.h2.Driver";
+  private String dbUrl = "jdbc:h2:./res/Products";
 
-  private static final String user = "";
-  private static final String pass = "";
+  private String user = "";
+  private String pass = "";
 
   private Connection conn = null;
 
@@ -34,8 +43,8 @@ public class ProductionLine_controller {
   /** Method that starts the connection between the controller and the database. */
   public void connDatabase() {
     try {
-      Class.forName(jdbc_driver);
-      conn = DriverManager.getConnection(DB_url, user, pass);
+      Class.forName(jdbcDriver);
+      conn = DriverManager.getConnection(dbUrl, user, pass);
       stmt = conn.createStatement();
       System.out.println("Database Connection Established.");
 
@@ -48,8 +57,8 @@ public class ProductionLine_controller {
       }
 
        */
-      stmt.close();
-      conn.close();
+      //      stmt.close();
+      //      conn.close();
 
     } catch (ClassNotFoundException | SQLException e) {
       e.printStackTrace();
@@ -59,7 +68,7 @@ public class ProductionLine_controller {
   /** List of FX identities used for functionality. */
   @FXML private ComboBox<Integer> cbShowProd;
 
-  @FXML private ChoiceBox<String> choiceAddProduct;
+  @FXML private ChoiceBox<ItemType> choiceAddProduct;
 
   @FXML private TextField tfProductName;
 
@@ -83,13 +92,14 @@ public class ProductionLine_controller {
   /** record button on produce tab. */
   @FXML private Button btnRecord;
 
+  ObservableList<Product> prods;
+
   /**
    * Method used for choice box functionality.
    *
-   * @param event MouseEvent Object
+   * @param actionEvent MouseEvent Object
    */
-  @FXML
-  void choice(MouseEvent event) {
+  public void choice(ActionEvent actionEvent) {
     //
   }
 
@@ -100,8 +110,13 @@ public class ProductionLine_controller {
    */
   @FXML
   void addProduct(MouseEvent event) {
-    // productList.add(new Widget(tf_productName, tf_manufacturer, ));
-    lvChooseProduct.getItems().add(String.valueOf(productList));
+
+    String name = tfProductName.getText();
+    String manufacturer = tfManufacturer.getText();
+    ItemType type = choiceAddProduct.getValue();
+
+    prods.add(new Widget(name, manufacturer, type));
+    lvChooseProduct.getItems().add(String.valueOf(prods));
     System.out.println("Product Added");
   }
 
@@ -112,47 +127,25 @@ public class ProductionLine_controller {
    */
   @FXML
   void record(MouseEvent event) {
+
     System.out.println("Recorded");
   }
-
-  ObservableList<Product> productList;
 
   /** Method to start functionality. */
   @FXML
   public void initialized() {
     cbShowProd.setEditable(true);
-    cbShowProd.getItems().add(1);
-    cbShowProd.getItems().add(2);
-    cbShowProd.getItems().add(3);
-    cbShowProd.getItems().add(4);
-    cbShowProd.getItems().add(5);
-    cbShowProd.getItems().add(6);
-    cbShowProd.getItems().add(7);
-    cbShowProd.getItems().add(8);
-    cbShowProd.getItems().add(9);
-    cbShowProd.getItems().add(10);
+    cbShowProd.getItems().addAll(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
     cbShowProd.getSelectionModel().selectFirst();
 
     for (ItemType itemFL : ItemType.values()) {
-      choiceAddProduct.getItems().add(itemFL + "" + itemFL.item);
+      choiceAddProduct.getItems().add(itemFL);
     }
 
-    ObservableList<Product> prods = FXCollections.observableArrayList();
+    prods = FXCollections.observableArrayList();
     clProdName.setCellValueFactory(new PropertyValueFactory("name"));
     clProdMan.setCellValueFactory(new PropertyValueFactory("manufacturer"));
     clProdType.setCellValueFactory(new PropertyValueFactory("type"));
     tvProducts.setItems(prods);
-    prods.add(new Product("pod", "Apple", ItemType.AUDIO) {});
-    lvChooseProduct.getItems().add(prods);
-
-    //    ArrayList<Bike> bikesAL = new ArrayList<>();
-    //    ObservableList<Bike> bikes = FXCollections.observableArrayList();
-    //
-    //    numGearsCol.setCellValueFactory(new PropertyValueFactory("numGears"));
-    //
-    //    bikeTable.setItems(bikes);
-    //
-    //    bikes.add(new Bike(12));
-
   }
 }

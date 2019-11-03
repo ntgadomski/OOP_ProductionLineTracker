@@ -1,4 +1,4 @@
-package productionLineTracker_OOP;
+package productionlinetracker;
 
 /**
  * Movie player is a subclass of product class that gives detail for movie player type products.
@@ -47,8 +47,11 @@ public class MoviePlayer extends Product implements MultimediaControl {
    *
    * @return the formatted String
    */
+  /*
   @Override
   public String toString() {
     return String.format("%n Screen: %n MonitorType: %n", super.toString(), screen, monitorType);
   }
+
+   */
 }

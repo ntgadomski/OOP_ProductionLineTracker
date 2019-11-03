@@ -1,4 +1,4 @@
-package productionLineTracker_OOP;
+package productionlinetracker;
 
 /** Screen class implements ScreenSpec class fields to create a screen @Author: Nickolas Gadomski */
 public class Screen implements ScreenSpec {
@@ -51,9 +51,12 @@ public class Screen implements ScreenSpec {
    *
    * @return the formatted String
    */
+  /*
   public String toString() {
     return String.format(
         "%n Resolution: %n Refresh Rate: %n Response Time: %n",
         resolution, refreshRate, responseTime);
   }
+
+   */
 }

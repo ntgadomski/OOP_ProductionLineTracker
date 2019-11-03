@@ -1,4 +1,4 @@
-package productionLineTracker_OOP;
+package productionlinetracker;
 
 /** Interface implemented by other classes for media control methods @Author: Nickolas Gadomski */
 public interface MultimediaControl {

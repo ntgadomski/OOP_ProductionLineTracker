@@ -1,4 +1,4 @@
-package productionLineTracker_OOP;
+package productionlinetracker;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

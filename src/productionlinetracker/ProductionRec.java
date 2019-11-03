@@ -1,4 +1,4 @@
-package productionLineTracker_OOP;
+package productionlinetracker;
 
 import java.util.Date;
 
@@ -35,7 +35,7 @@ public class ProductionRec {
     this.productID = productID;
     this.productionNum = productionNum;
     this.serialNum = serialNum;
-    this.produceDate = produceDate;
+    //this.produceDate = produceDate;
   }
 
   /**
@@ -110,18 +110,18 @@ public class ProductionRec {
    *
    * @return Date prodDate
    */
-  public Date getProdDate() {
-    return produceDate;
-  }
+  //public Date getProdDate() {
+    //return produceDate;
+  //}
 
   /**
    * Mutator sets local produced Date field.
    *
    * @param produceDate Date produceDate
    */
-  public void setProdDate(Date produceDate) {
-    this.produceDate = produceDate;
-  }
+ // public void setProdDate(Date produceDate) {
+    //this.produceDate = produceDate;
+  //}
 
   /**
    * Format String method.

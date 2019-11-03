@@ -1,4 +1,4 @@
-package productionLineTracker_OOP;
+package productionlinetracker;
 
 /**
  * Abstract product class created to be super class for product subclasses. Also utilizes Item
@@ -101,8 +101,9 @@ public abstract class Product implements Item {
    * @return the formatted String
    */
   public String toString() {
-    return String.format(
-        "Name: %n Manufacturer: %n Type: %n", this.name, this.manufacturer, this.type);
+    return "Name: " + name + "\n"
+            + "Manufacturer: " + manufacturer + "\n"
+            +  "Type: " + type;
   }
 }
 
