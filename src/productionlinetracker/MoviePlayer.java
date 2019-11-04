@@ -9,7 +9,7 @@ public class MoviePlayer extends Product implements MultimediaControl {
   private final MonitorType monitorType;
 
   /**
-   * Constructor that creates audio player product with given parameters
+   * Constructor that creates audio player product with given parameters.
    *
    * @param name product name
    * @param manufacturer product company
@@ -22,31 +22,26 @@ public class MoviePlayer extends Product implements MultimediaControl {
     this.monitorType = monitorType;
   }
 
-  /** Media controller method for play movie */
+  /** Media controller method for play movie. */
   public void play() {
     System.out.println("Playing movie");
   }
 
-  /** Media controller method for stop movie */
+  /** Media controller method for stop movie. */
   public void stop() {
     System.out.println("Stopping movie");
   }
 
-  /** Media controller method for previous movie */
+  /** Media controller method for previous movie. */
   public void previous() {
     System.out.println("Previous movie");
   }
 
-  /** Media controller method for next movie */
+  /** Media controller method for next movie. */
   public void next() {
     System.out.println("Next movie");
   }
 
-  /**
-   * Format String method
-   *
-   * @return the formatted String
-   */
   /*
   @Override
   public String toString() {

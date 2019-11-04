@@ -1,6 +1,6 @@
 package productionlinetracker;
 
-/** Interface implemented by other classes for product methods @Author: Nickolas Gadomski */
+/** Interface implemented by other classes for product methods. @Author: Nickolas Gadomski */
 public interface Item {
   int getId();
 

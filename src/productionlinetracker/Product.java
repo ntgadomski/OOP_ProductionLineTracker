@@ -2,7 +2,7 @@ package productionlinetracker;
 
 /**
  * Abstract product class created to be super class for product subclasses. Also utilizes Item
- * Interface (cannot be instantiated as abstract) @Author: Nickolas Gadomski
+ * Interface (cannot be instantiated as abstract). @Author: Nickolas Gadomski
  */
 public abstract class Product implements Item {
   private int id;
@@ -11,7 +11,7 @@ public abstract class Product implements Item {
   private ItemType type;
 
   /**
-   * Constructor for local product fields
+   * Constructor for local product fields.
    *
    * @param name product name
    * @param manufacturer product company
@@ -24,7 +24,7 @@ public abstract class Product implements Item {
   }
 
   /**
-   * Accessor for local id field
+   * Accessor for local id field.
    *
    * @return integer id
    */
@@ -33,7 +33,7 @@ public abstract class Product implements Item {
   }
 
   /**
-   * Mutator sets local id field
+   * Mutator sets local id field.
    *
    * @param id integer id
    */
@@ -42,7 +42,7 @@ public abstract class Product implements Item {
   }
 
   /**
-   * Accessor for local name field
+   * Accessor for local name field.
    *
    * @return String name
    */
@@ -51,7 +51,7 @@ public abstract class Product implements Item {
   }
 
   /**
-   * Mutator sets local name field
+   * Mutator sets local name field.
    *
    * @param name String name
    */
@@ -60,7 +60,7 @@ public abstract class Product implements Item {
   }
 
   /**
-   * Accessor for local manufacturer field
+   * Accessor for local manufacturer field.
    *
    * @return String manufacturer
    */
@@ -69,7 +69,7 @@ public abstract class Product implements Item {
   }
 
   /**
-   * Mutator sets local manufacturer field
+   * Mutator sets local manufacturer field.
    *
    * @param manufacturer String manufacturer
    */
@@ -78,7 +78,7 @@ public abstract class Product implements Item {
   }
 
   /**
-   * Accessor for local type field
+   * Accessor for local type field.
    *
    * @return Enum ItemType type
    */
@@ -87,7 +87,7 @@ public abstract class Product implements Item {
   }
 
   /**
-   * Mutator sets local type field
+   * Mutator sets local type field.
    *
    * @param type Enum ItemType type
    */
@@ -96,18 +96,11 @@ public abstract class Product implements Item {
   }
 
   /**
-   * Format String method
+   * Format String method.
    *
    * @return the formatted String
    */
   public String toString() {
     return "Name: " + name + "\n" + "Manufacturer: " + manufacturer + "\n" + "Type: " + type;
-  }
-}
-
-/** Widget class inherits from product */
-class Widget extends Product {
-  Widget(String name, String manufacturer, ItemType type) {
-    super(name, manufacturer, type);
   }
 }

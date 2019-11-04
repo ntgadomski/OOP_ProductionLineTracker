@@ -1,6 +1,6 @@
 package productionlinetracker;
 
-/** Interface implemented by other classes for media control methods @Author: Nickolas Gadomski */
+/** Interface implemented by other classes for media control methods. @Author: Nickolas Gadomski */
 public interface MultimediaControl {
   void play();
 

@@ -105,20 +105,10 @@ public class ProductionRec {
     this.serialNum = serialNum;
   }
 
-  /**
-   * Accessor for local produced Date field.
-   *
-   * @return Date prodDate
-   */
   // public Date getProdDate() {
   // return produceDate;
   // }
 
-  /**
-   * Mutator sets local produced Date field.
-   *
-   * @param produceDate Date produceDate
-   */
   // public void setProdDate(Date produceDate) {
   // this.produceDate = produceDate;
   // }

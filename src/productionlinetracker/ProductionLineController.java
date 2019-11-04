@@ -7,7 +7,7 @@ import java.sql.Statement;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -93,15 +93,9 @@ public class ProductionLineController {
   @FXML private Button btnRecord;
 
   ObservableList<Product> prods;
-
-  /**
-   * Method used for choice box functionality.
-   *
-   * @param actionEvent MouseEvent Object
-   */
-  public void choice(ActionEvent actionEvent) {
-    //
-  }
+  private String name;
+  private String manufacturer;
+  private ItemType type;
 
   /**
    * Method used for the Add Product button.
@@ -112,7 +106,9 @@ public class ProductionLineController {
   void addProduct(MouseEvent event) {
 
     String name = tfProductName.getText();
+    tfProductName.clear();
     String manufacturer = tfManufacturer.getText();
+    tfManufacturer.clear();
     ItemType type = choiceAddProduct.getValue();
 
     prods.add(new Widget(name, manufacturer, type));
@@ -127,19 +123,25 @@ public class ProductionLineController {
    */
   @FXML
   void record(MouseEvent event) {
-
+    int itemCount = 1;
+    int numberProd = cbShowProd.getValue();
+    for (int runProd = 1; runProd <= numberProd; runProd++) {
+      ProductionRec recProd = new ProductionRec(itemCount++);
+      taProdLog.appendText((recProd.toString() + "\n"));
+    }
     System.out.println("Recorded");
   }
 
   /** Method to start functionality. */
   @FXML
-  public void initialized() {
+  public void initialize() {
+
     cbShowProd.setEditable(true);
     cbShowProd.getItems().addAll(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
     cbShowProd.getSelectionModel().selectFirst();
 
-    for (ItemType itemFL : ItemType.values()) {
-      choiceAddProduct.getItems().add(itemFL);
+    for (ItemType item : ItemType.values()) {
+      choiceAddProduct.getItems().add(item);
     }
 
     prods = FXCollections.observableArrayList();

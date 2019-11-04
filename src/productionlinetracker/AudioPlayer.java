@@ -1,4 +1,5 @@
 package productionlinetracker;
+
 /**
  * Audio player is a subclass of product class that gives detail for audio player type products.
  * Also utilizes media control class @Author: Nickolas Gadomski
@@ -8,7 +9,7 @@ public class AudioPlayer extends Product implements MultimediaControl {
   private String mediaType;
 
   /**
-   * Constructor that creates audio player product with given parameters
+   * Constructor that creates audio player product with given parameters.
    *
    * @param name String product name
    * @param manufacturer String product company
@@ -23,7 +24,7 @@ public class AudioPlayer extends Product implements MultimediaControl {
   }
 
   /**
-   * Accessor for local audio spec. field
+   * Accessor for local audio spec. field.
    *
    * @return String audioSpecification
    */
@@ -32,7 +33,7 @@ public class AudioPlayer extends Product implements MultimediaControl {
   }
 
   /**
-   * Mutator sets local audio spec. field
+   * Mutator sets local audio spec. field.
    *
    * @param audioSpecification String audioSpecification.
    */
@@ -41,7 +42,7 @@ public class AudioPlayer extends Product implements MultimediaControl {
   }
 
   /**
-   * Accessor for local media type field
+   * Accessor for local media type field.
    *
    * @return String mediaType
    */
@@ -50,7 +51,7 @@ public class AudioPlayer extends Product implements MultimediaControl {
   }
 
   /**
-   * Mutator sets local media type field
+   * Mutator sets local media type field.
    *
    * @param mediaType String mediaType
    */
@@ -58,31 +59,26 @@ public class AudioPlayer extends Product implements MultimediaControl {
     this.mediaType = mediaType;
   }
 
-  /** Media controller method for play */
+  /** Media controller method for play. */
   public void play() {
     System.out.println("Playing");
   }
 
-  /** Media controller method for stop */
+  /** Media controller method for stop. */
   public void stop() {
     System.out.println("Stopping");
   }
 
-  /** Media controller method for previous */
+  /** Media controller method for previous. */
   public void previous() {
     System.out.println("Previous");
   }
 
-  /** Media controller method for next */
+  /** Media controller method for next. */
   public void next() {
     System.out.println("Next");
   }
 
-  /**
-   * Format String method
-   *
-   * @return the formatted String
-   */
   /*
   public String toString() {
     return String.format(

@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 // import java.util.ArrayList;
+
 /**
  * /** Production Line Tracker Project used with a database to help with organizing
  * products. @Author: Nickolas Gadomski

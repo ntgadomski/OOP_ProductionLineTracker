@@ -1,6 +1,6 @@
 package productionlinetracker;
 
-/** Enumeration list of variables for different product types @Author: Nickolas Gadomski */
+/** Enumeration list of variables for different product types. @Author: Nickolas Gadomski */
 enum ItemType {
   AUDIO("AU"),
   VISUAL("VI"),
@@ -10,7 +10,7 @@ enum ItemType {
   public String code;
 
   /**
-   * ItemType method accepts String item which passes enum variables
+   * ItemType method accepts String item which passes enum variables.
    *
    * @param code field for passing
    */
@@ -19,7 +19,7 @@ enum ItemType {
   }
 
   /**
-   * Accessor for String item field
+   * Accessor for String item field.
    *
    * @return String item field / enum variables
    */
