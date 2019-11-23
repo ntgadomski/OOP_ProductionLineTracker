@@ -4,9 +4,9 @@ package productionlinetracker;
 public interface Item {
   int getId();
 
-  void setName(String name);
+  void setProdName(String prodName);
 
-  String getName();
+  String getProdName();
 
   void setManufacturer(String manufacturer);
 

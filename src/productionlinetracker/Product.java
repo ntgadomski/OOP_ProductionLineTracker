@@ -6,19 +6,19 @@ package productionlinetracker;
  */
 public abstract class Product implements Item {
   private int id;
-  private String name;
+  private String prodName;
   private String manufacturer;
   private ItemType type;
 
   /**
    * Constructor for local product fields.
    *
-   * @param name product name
+   * @param prodName product name
    * @param manufacturer product company
    * @param type product type
    */
-  public Product(String name, String manufacturer, ItemType type) {
-    this.name = name;
+  public Product(String prodName, String manufacturer, ItemType type) {
+    this.prodName = prodName;
     this.manufacturer = manufacturer;
     this.type = type;
   }
@@ -46,17 +46,17 @@ public abstract class Product implements Item {
    *
    * @return String name
    */
-  public String getName() {
-    return name;
+  public String getProdName() {
+    return prodName;
   }
 
   /**
    * Mutator sets local name field.
    *
-   * @param name String name
+   * @param prodName String name
    */
-  public void setName(String name) {
-    this.name = name;
+  public void setProdName(String prodName) {
+    this.prodName = prodName;
   }
 
   /**
@@ -101,6 +101,6 @@ public abstract class Product implements Item {
    * @return the formatted String
    */
   public String toString() {
-    return "Name: " + name + "\n" + "Manufacturer: " + manufacturer + "\n" + "Type: " + type;
+    return "Name: " + prodName + "\n" + "Manufacturer: " + manufacturer + "\n" + "Type: " + type;
   }
 }

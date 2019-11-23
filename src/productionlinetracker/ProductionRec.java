@@ -10,6 +10,8 @@ public class ProductionRec {
   private int productID;
   private String serialNum;
   private Date produceDate;
+  //private Product p;
+
 
   /**
    * Constructor to create product identification.
@@ -21,6 +23,7 @@ public class ProductionRec {
     this.productionNum = 0;
     this.serialNum = "0";
     this.produceDate = new Date();
+
   }
 
   /**
@@ -35,7 +38,8 @@ public class ProductionRec {
     this.productID = productID;
     this.productionNum = productionNum;
     this.serialNum = serialNum;
-    // this.produceDate = produceDate;
+    this.produceDate = produceDate;
+
   }
 
   /**
@@ -45,10 +49,11 @@ public class ProductionRec {
    * @param counter local integer counter field.
    */
   public ProductionRec(Product product, int counter) {
-    String idNumber = String.format("%05d", counter);
-    this.serialNum =
-        product.getManufacturer().substring(0, 3) + product.getType().getItem() + idNumber;
+
     this.produceDate = new Date();
+    this.serialNum = product.getManufacturer().substring(0, 3) + product.getType().getItem() + String.format("%05d", counter);
+
+   // this.p = product;
   }
 
   /**
@@ -119,6 +124,7 @@ public class ProductionRec {
    * @return the formatted String
    */
   public String toString() {
+
     return String.format(
         "Prod. Num: %s Product ID: %s Serial Num: %s Date: %s",
         productionNum, productID, serialNum, produceDate);

@@ -44,17 +44,7 @@ public class Main extends Application {
    */
   public static void main(
       String[] args) { // Driver not found go into project structure and find H2 Driver
-    Product productProduced = new Widget("iPod", "Apple", ItemType.AUDIO);
 
-    // test constructor used when creating production records from user interface
-    int numProduced = 3; // this will come from the combobox in the UI
-    int itemCount = 0;
-
-    for (int productionRunProduct = 0; productionRunProduct < numProduced; productionRunProduct++) {
-      ProductionRec pr = new ProductionRec(productProduced, itemCount++);
-      // using the iterator as the product id for testing
-      System.out.println(pr.toString());
-    }
     launch(args);
   }
 }
