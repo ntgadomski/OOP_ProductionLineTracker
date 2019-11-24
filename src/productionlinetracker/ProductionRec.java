@@ -2,7 +2,6 @@ package productionlinetracker;
 
 import java.util.Date;
 
-
 /**
  * Production record class used to store updated data into the database @Author: Nickolas Gadomski.
  */
@@ -12,8 +11,7 @@ public class ProductionRec {
   private int productID;
   private String serialNum;
   private Date produceDate;
- private String productName;
-
+  private String productName;
 
   /**
    * Constructor to create product identification.
@@ -25,7 +23,6 @@ public class ProductionRec {
     this.productionNum = 0;
     this.serialNum = "0";
     this.produceDate = new Date();
-
   }
 
   /**
@@ -41,7 +38,6 @@ public class ProductionRec {
     this.productionNum = productionNum;
     this.serialNum = serialNum;
     this.produceDate = produceDate;
-
   }
 
   /**
@@ -53,23 +49,32 @@ public class ProductionRec {
   public ProductionRec(Product product, int counter) {
 
     this.produceDate = new Date();
-    this.serialNum = product.getManufacturer().substring(0, 3) + product.getType().getItem() + String.format("%05d", counter);
+    this.serialNum =
+        product.getManufacturer().substring(0, 3)
+            + product.getType().getItem()
+            + String.format("%05d", counter);
     this.productName = product.getProdName();
 
-   // this.p = product;
+    // this.p = product;
   }
 
   /**
    * Accessor for local ProduceDate field.
+   *
    * @return Date produceDate
    */
-  public Date getProduceDate() { return produceDate; }
+  public Date getProduceDate() {
+    return produceDate;
+  }
 
   /**
    * Accessor for local productName field.
+   *
    * @return String productName
    */
-  public String getProductName(){return productName;}
+  public String getProductName() {
+    return productName;
+  }
 
   /**
    * Accessor for local production number field.

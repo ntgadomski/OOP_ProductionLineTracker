@@ -1,6 +1,7 @@
 package productionlinetracker;
 
 import java.io.FileInputStream;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Properties;
@@ -9,13 +10,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
 
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import sun.security.util.Password;
-
-import javax.naming.Name;
 
 /**
  * Controller Class Handles the the outputs of buttons and connects database. @Author: Nickolas
@@ -23,15 +21,15 @@ import javax.naming.Name;
  */
 public class ProductionLineController {
 
-  /**
-   * Class
-   */
+  /** Class level fields to be used throughout the code. */
   static Statement stmt = null;
+
   static Connection conn = null;
   private ObservableList<Product> prods;
   private int prodsIndex = 0;
   private ProductionRec productRec;
   private Employee myEmployee;
+  ArrayList<ProductionRec> prodRecordArray;
   //  static PreparedStatement preparedStatement;
 
   /** Method that starts the connection between the controller and the database. */
@@ -81,7 +79,6 @@ public class ProductionLineController {
     initializeDB();
     loadProductList();
     setUpProductLineTable();
-
   }
 
   /** List of FX identities used for functionality. */
@@ -105,17 +102,13 @@ public class ProductionLineController {
 
   @FXML private TextArea taProdLog;
 
-  @FXML
-  private TextArea taEmployeeAccount;
+  @FXML private TextArea taEmployeeAccount;
 
-  @FXML
-  private TextField tfFirstName;
+  @FXML private TextField tfFirstName;
 
-  @FXML
-  private PasswordField pfPassword;
+  @FXML private PasswordField pfPassword;
 
-  @FXML
-  private Button btnCreateAccount;
+  @FXML private Button btnCreateAccount;
 
   /** add product button on production line tab. */
   @FXML private Button btnAddProduct;
@@ -123,16 +116,15 @@ public class ProductionLineController {
   /** record button on produce tab. */
   @FXML private Button btnRecord;
 
-
   /**
-   *  Method used for the create account button
+   * Method used for the create account button, calls account method.
+   *
    * @param event MouseEvent Object
-   * @throws SQLException
+   * @throws SQLException checks if sql statement is valid
    */
   @FXML
-  void createAccount(MouseEvent event) throws SQLException{
+  void createAccount(MouseEvent event) throws SQLException {
     account();
-
   }
 
   /**
@@ -147,7 +139,7 @@ public class ProductionLineController {
     String manufacturer = tfManufacturer.getText();
     ItemType type = choiceAddProduct.getValue();
 
-    String productQuery =  "INSERT INTO PRODUCT(NAME, TYPE, MANUFACTURER) VALUES (?,?,?)";
+    String productQuery = "INSERT INTO PRODUCT(NAME, TYPE, MANUFACTURER) VALUES (?,?,?)";
 
     PreparedStatement addProduct = conn.prepareStatement(productQuery);
     addProduct.setString(1, prodName);
@@ -183,11 +175,13 @@ public class ProductionLineController {
     }
     addToProductionDB(productRecords);
     loadProductionLog();
+    showProduction();
     System.out.println("Product Recorded");
   }
 
   /**
-   * Method that loads all products from the database and shows it onto the list view
+   * Method that loads all products from the database and shows it onto the list view.
+   *
    * @throws SQLException checks if sql statement is valid
    */
   public void loadProductList() throws SQLException {
@@ -207,14 +201,17 @@ public class ProductionLineController {
   }
 
   /**
-   * Method that allows the user to add the product from the list view into the production log database
+   * Method that allows the user to add the product from the list view into the production log
+   * database. Will not record product unless username is created before hand.
+   *
    * @param productionRecArrayList Production Record Array List
    * @throws SQLException checks if sql statement is valid
    */
   public void addToProductionDB(ArrayList<ProductionRec> productionRecArrayList)
       throws SQLException {
     String productQuery =
-        "INSERT INTO PRODUCTIONRECORD(product_name, serial_num, date_produced, USERNAME) VALUES (?,?,?,?)";
+        "INSERT INTO PRODUCTIONRECORD("
+            + "product_name, serial_num, date_produced, USERNAME) VALUES (?,?,?,?)";
     PreparedStatement addRecToDB = conn.prepareStatement(productQuery);
     for (int i = 0; i < productionRecArrayList.size(); i++) {
       addRecToDB.setString(1, productionRecArrayList.get(i).getProductName());
@@ -227,31 +224,13 @@ public class ProductionLineController {
   }
 
   /**
+   * Method to load the production log from the database.
    *
-   * @throws SQLException
+   * @throws SQLException checks if sql statement is valid
    */
   public void loadProductionLog() throws SQLException {
-    Product selectList = (Product) lvChooseProduct.getSelectionModel().getSelectedItem();
-    String quantityS = String.valueOf(cbShowProd.getValue());
-    int numberProd = Integer.parseInt(quantityS);
-    for (int runProd = 0; runProd < numberProd; runProd++) {
-      ProductionRec recProd = new ProductionRec(selectList, runProd);
 
-      taProdLog.appendText((recProd.toString() + "\n"));
-      showProduction();
-    }
-  }
-
-  public void setUpProductLineTable() {
-    clProdName.setCellValueFactory(new PropertyValueFactory("prodName"));
-    clProdMan.setCellValueFactory(new PropertyValueFactory("manufacturer"));
-    clProdType.setCellValueFactory(new PropertyValueFactory("type"));
-    tvProducts.setItems(prods);
-  }
-
-  public void showProduction() throws SQLException {
-
-    ArrayList<ProductionRec> prodRecordArray = new ArrayList<>();
+    prodRecordArray = new ArrayList<>();
     String sql = "SELECT * FROM PRODUCTIONRECORD";
     ResultSet rs = stmt.executeQuery(sql);
     while (rs.next()) {
@@ -261,21 +240,39 @@ public class ProductionLineController {
       String serialNumDB = rs.getString(3);
       Date dateProducedDB = new Date(rs.getTimestamp(4).getTime());
       // create object
-      ProductionRec productionDB = new ProductionRec(productNumDB, prodNameDB, serialNumDB, dateProducedDB);
+      ProductionRec productionDB =
+          new ProductionRec(productNumDB, prodNameDB, serialNumDB, dateProducedDB);
       // save to observable list
       prodRecordArray.add(productionDB);
-      for (int i = 0; i < prodRecordArray.size(); i++) {
-        taProdLog.appendText(prodRecordArray.get(i).toString() + "\n");
-      }
     }
   }
 
+  /** Method to set up the columns for the table view. */
+  public void setUpProductLineTable() {
+    clProdName.setCellValueFactory(new PropertyValueFactory("prodName"));
+    clProdMan.setCellValueFactory(new PropertyValueFactory("manufacturer"));
+    clProdType.setCellValueFactory(new PropertyValueFactory("type"));
+    tvProducts.setItems(prods);
+  }
+
+  /** Method to show the elements of the production log. */
+  public void showProduction() {
+    for (int i = 0; i < prodRecordArray.size(); i++) {
+      taProdLog.appendText(prodRecordArray.get(i).toString() + "\n");
+    }
+  }
+
+  /**
+   * Method to allow the user to create an employee account.
+   *
+   * @throws SQLException checks if sql statement is valid
+   */
   public void account() throws SQLException {
     String name = tfFirstName.getText();
     String password = pfPassword.getText();
     myEmployee = new Employee(name, password);
 
-    String productQuery =  "INSERT INTO EMPLOYEE(NAME, PASSWORD, USERNAME, EMAIL) VALUES (?,?,?,?)";
+    String productQuery = "INSERT INTO EMPLOYEE(NAME, PASSWORD, USERNAME, EMAIL) VALUES (?,?,?,?)";
     PreparedStatement addEmployee = conn.prepareStatement(productQuery);
     addEmployee.setString(1, name);
     addEmployee.setString(2, password);
@@ -285,9 +282,6 @@ public class ProductionLineController {
 
     tfProductName.clear();
     tfManufacturer.clear();
-    taEmployeeAccount.appendText(myEmployee.toString() + "\n\n" );
+    taEmployeeAccount.appendText(myEmployee.toString() + "\n\n");
   }
-
 }
-
-
