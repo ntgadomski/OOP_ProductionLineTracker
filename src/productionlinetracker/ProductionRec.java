@@ -2,15 +2,17 @@ package productionlinetracker;
 
 import java.util.Date;
 
+
 /**
  * Production record class used to store updated data into the database @Author: Nickolas Gadomski.
  */
 public class ProductionRec {
+
   private int productionNum;
   private int productID;
   private String serialNum;
   private Date produceDate;
-  //private Product p;
+ private String productName;
 
 
   /**
@@ -30,12 +32,12 @@ public class ProductionRec {
    * Constructor to record product fields.
    *
    * @param productionNum local integer production number.
-   * @param productID local integer product ID.
+   * @param productName local String product name.
    * @param serialNum local String serial number.
    * @param produceDate local Date produced Date.
    */
-  public ProductionRec(int productionNum, int productID, String serialNum, Date produceDate) {
-    this.productID = productID;
+  public ProductionRec(int productionNum, String productName, String serialNum, Date produceDate) {
+    this.productName = productName;
     this.productionNum = productionNum;
     this.serialNum = serialNum;
     this.produceDate = produceDate;
@@ -52,9 +54,22 @@ public class ProductionRec {
 
     this.produceDate = new Date();
     this.serialNum = product.getManufacturer().substring(0, 3) + product.getType().getItem() + String.format("%05d", counter);
+    this.productName = product.getProdName();
 
    // this.p = product;
   }
+
+  /**
+   * Accessor for local ProduceDate field.
+   * @return Date produceDate
+   */
+  public Date getProduceDate() { return produceDate; }
+
+  /**
+   * Accessor for local productName field.
+   * @return String productName
+   */
+  public String getProductName(){return productName;}
 
   /**
    * Accessor for local production number field.
@@ -126,7 +141,7 @@ public class ProductionRec {
   public String toString() {
 
     return String.format(
-        "Prod. Num: %s Product ID: %s Serial Num: %s Date: %s",
-        productionNum, productID, serialNum, produceDate);
+        "Prod. Num: %s Product Name: %s Serial Num: %s Date: %s",
+        productionNum, productName, serialNum, produceDate);
   }
 }
