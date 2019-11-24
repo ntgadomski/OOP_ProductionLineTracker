@@ -79,7 +79,8 @@ public class ProductionLineController {
     initializeDB();
     loadProductList();
     setUpProductLineTable();
-//    showProduction();
+    //    showProduction();
+
   }
 
   /** List of FX identities used for functionality. */
@@ -176,7 +177,7 @@ public class ProductionLineController {
     }
     addToProductionDB(productRecords);
     loadProductionLog();
-//    showProduction();
+    //    showProduction();
     System.out.println("Product Recorded");
   }
 
