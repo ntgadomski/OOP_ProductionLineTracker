@@ -74,12 +74,11 @@ public class ProductionLineController {
       choiceAddProduct.getItems().add(item);
     }
 
-    prods = FXCollections.observableArrayList();
-
     initializeDB();
-    loadProductList();
     setUpProductLineTable();
-    //    showProduction();
+    loadProductList();
+    loadProductionLog();
+   showProduction();
 
   }
 
@@ -153,8 +152,7 @@ public class ProductionLineController {
     tfManufacturer.clear();
     choiceAddProduct.getSelectionModel().clearSelection();
 
-    prods.add(new Widget(prodName, manufacturer, type));
-    lvChooseProduct.getItems().addAll(prods);
+    loadProductList();
 
     System.out.println("Product Added");
   }
@@ -177,7 +175,7 @@ public class ProductionLineController {
     }
     addToProductionDB(productRecords);
     loadProductionLog();
-    //    showProduction();
+    showProduction();
     System.out.println("Product Recorded");
   }
 
@@ -197,31 +195,8 @@ public class ProductionLineController {
       // create object
       Product productDB = new Widget(nameDB, manDB, typeDB);
       // save to observable list
-      prods.addAll(productDB);
+      prods.add(productDB);
       lvChooseProduct.getItems().add(prods.get(prodsIndex++));
-    }
-  }
-
-  /**
-   * Method that allows the user to add the product from the list view into the production log
-   * database. Will not record product unless username is created before hand.
-   *
-   * @param productionRecArrayList Production Record Array List
-   * @throws SQLException checks if sql statement is valid
-   */
-  public void addToProductionDB(ArrayList<ProductionRec> productionRecArrayList)
-      throws SQLException {
-    String productQuery =
-        "INSERT INTO PRODUCTIONRECORD("
-            + "product_name, serial_num, date_produced, USERNAME) VALUES (?,?,?,?)";
-    PreparedStatement addRecToDB = conn.prepareStatement(productQuery);
-    for (int i = 0; i < productionRecArrayList.size(); i++) {
-      addRecToDB.setString(1, productionRecArrayList.get(i).getProductName());
-      addRecToDB.setString(2, productionRecArrayList.get(i).getSerialNum());
-      addRecToDB.setTimestamp(
-          3, new Timestamp(productionRecArrayList.get(i).getProduceDate().getTime()));
-      addRecToDB.setString(4, myEmployee.username);
-      addRecToDB.executeUpdate();
     }
   }
 
@@ -243,14 +218,38 @@ public class ProductionLineController {
       Date dateProducedDB = new Date(rs.getTimestamp(4).getTime());
       // create object
       ProductionRec productionDB =
-          new ProductionRec(productNumDB, prodNameDB, serialNumDB, dateProducedDB);
+              new ProductionRec(productNumDB, prodNameDB, serialNumDB, dateProducedDB);
       // save to observable list
       prodRecordArray.add(productionDB);
     }
   }
 
+  /**
+   * Method that allows the user to add the product from the list view into the production log
+   * database. Will not record product unless username is created before hand.
+   *
+   * @param productionRecArrayList Production Record Array List
+   * @throws SQLException checks if sql statement is valid
+   */
+  public void addToProductionDB(ArrayList<ProductionRec> productionRecArrayList)
+      throws SQLException {
+    String productQuery =
+        "INSERT INTO PRODUCTIONRECORD("
+            + "product_name, serial_num, date_produced, username) VALUES (?,?,?,?)";
+    PreparedStatement addRecToDB = conn.prepareStatement(productQuery);
+    for (ProductionRec record : productionRecArrayList) {
+      addRecToDB.setString(1, record.getProductName());
+      addRecToDB.setString(2, record.getSerialNum());
+      addRecToDB.setTimestamp(
+          3, new Timestamp(record.getProduceDate().getTime()));
+      addRecToDB.setString(4, myEmployee.username);
+      addRecToDB.executeUpdate();
+    }
+  }
+
   /** Method to set up the columns for the table view. */
   public void setUpProductLineTable() {
+    prods = FXCollections.observableArrayList();
     clProdName.setCellValueFactory(new PropertyValueFactory("prodName"));
     clProdMan.setCellValueFactory(new PropertyValueFactory("manufacturer"));
     clProdType.setCellValueFactory(new PropertyValueFactory("type"));
