@@ -78,8 +78,7 @@ public class ProductionLineController {
     setUpProductLineTable();
     loadProductList();
     loadProductionLog();
-   showProduction();
-
+    showProduction();
   }
 
   /** List of FX identities used for functionality. */
@@ -218,7 +217,7 @@ public class ProductionLineController {
       Date dateProducedDB = new Date(rs.getTimestamp(4).getTime());
       // create object
       ProductionRec productionDB =
-              new ProductionRec(productNumDB, prodNameDB, serialNumDB, dateProducedDB);
+          new ProductionRec(productNumDB, prodNameDB, serialNumDB, dateProducedDB);
       // save to observable list
       prodRecordArray.add(productionDB);
     }
@@ -240,8 +239,7 @@ public class ProductionLineController {
     for (ProductionRec record : productionRecArrayList) {
       addRecToDB.setString(1, record.getProductName());
       addRecToDB.setString(2, record.getSerialNum());
-      addRecToDB.setTimestamp(
-          3, new Timestamp(record.getProduceDate().getTime()));
+      addRecToDB.setTimestamp(3, new Timestamp(record.getProduceDate().getTime()));
       addRecToDB.setString(4, myEmployee.username);
       addRecToDB.executeUpdate();
     }
