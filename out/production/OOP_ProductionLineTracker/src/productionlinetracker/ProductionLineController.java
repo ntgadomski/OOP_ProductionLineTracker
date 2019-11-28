@@ -1,6 +1,5 @@
 package productionlinetracker;
 
-import java.awt.*;
 import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -227,10 +226,10 @@ public class ProductionLineController {
     String quantityS = String.valueOf(cbShowProd.getValue());
     int numberProduced = Integer.parseInt(quantityS); // comes from combo box UI
 
-    try{
-      if(selectList.equals("null")){
+    try {
+      if (selectList.equals("null")) {
         throw new NullPointerException();
-    }else{
+      } else {
         ArrayList<ProductionRec> productRecords = new ArrayList();
         for (int runProduct = 0; runProduct < numberProduced; runProduct++) {
           ProductionRec productRec = new ProductionRec(selectList, runProduct);
@@ -247,24 +246,22 @@ public class ProductionLineController {
         } catch (NullPointerException e) {
           JFrame frame = new JFrame("");
           JOptionPane.showMessageDialog(
-                  frame.getContentPane(),
-                  " Go to employee tab and create account to record products"
-                          + "\n"
-                          + "Employee Account is not created.",
-                  "Account Not Created",
-                  JOptionPane.ERROR_MESSAGE);
+              frame.getContentPane(),
+              " Go to employee tab and create account to record products"
+                  + "\n"
+                  + "Employee Account is not created.",
+              "Account Not Created",
+              JOptionPane.ERROR_MESSAGE);
         }
       }
     } catch (NullPointerException e) {
       JFrame frame = new JFrame("");
       JOptionPane.showMessageDialog(
-              frame.getContentPane(),
-              " Select Product from List"
-                      + "\n"
-                      + "Product not selected.",
-              "No Selection",
-              JOptionPane.ERROR_MESSAGE);
-}
+          frame.getContentPane(),
+          " Select Product from List" + "\n" + "Product not selected.",
+          "No Selection",
+          JOptionPane.ERROR_MESSAGE);
+    }
     showProduction();
   }
 
