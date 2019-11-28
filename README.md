@@ -317,9 +317,7 @@ As there are now two values to be displayed (code, deptId) create a toString() m
 
 Update the TestProductionLine class to use the toString() method to display the values to the console.
     
-Java Documentation:
-
-[Java Doc](https://spudnick79.github.io/OOP_ProductionLineTracker/)
+Java Documentation:[Java Doc](https://spudnick79.github.io/OOP_ProductionLineTracker/)
 
 Class Diagram:
 
