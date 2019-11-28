@@ -319,4 +319,8 @@ Update the TestProductionLine class to use the toString() method to display the 
     
 Java Documentation:
 
-[JAVADOC](http://localhost:63342/OOP_ProductionLineTracker/docs/index.html?_ijt=mqp2gd9s736faaat7joa0cfshb)
+[Java Doc](https://spudnick79.github.io/OOP_ProductionLineTracker/)
+
+Class Diagram:
+
+
