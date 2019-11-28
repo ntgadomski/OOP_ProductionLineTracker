@@ -55,7 +55,6 @@ public class ProductionRec {
             + String.format("%05d", counter);
     this.productName = product.getProdName();
 
-    // this.p = product;
   }
 
   /**

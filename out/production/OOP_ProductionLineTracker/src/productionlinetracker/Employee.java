@@ -1,5 +1,7 @@
 package productionlinetracker;
 
+import javax.swing.*;
+import java.awt.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -28,6 +30,12 @@ public class Employee {
       setUsername(sBName);
       setEmail(sBName);
     } else {
+      JFrame frame = new JFrame("");
+      JOptionPane.showMessageDialog(
+          frame.getContentPane(),
+          "Input First name & Last name to create custom account\n" + "Default account is set.",
+          "Default Username",
+          JOptionPane.ERROR_MESSAGE);
       setUsername(defaultUsername);
       setEmail(defaultEmail);
     }
@@ -35,8 +43,16 @@ public class Employee {
       this.password = password;
     } else {
       this.password = "pw";
+      JFrame frame = new JFrame("");
+      JOptionPane.showMessageDialog(
+          frame.getContentPane(),
+          "Password must contain Upper and Lower case letter & Special Character\n"
+              + "Default password is set.",
+          "Default Password",
+          JOptionPane.ERROR_MESSAGE);
+      setUsername(defaultUsername);
     }
-  }
+    }
 
   /**
    * Method to check if the name entered by the user is valid.

@@ -1,19 +1,33 @@
 package productionlinetracker;
 
 import java.io.FileInputStream;
-
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Properties;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
 import javafx.fxml.FXML;
-
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.ListView;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Label;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+
+import javax.swing.*;
 
 /**
  * Controller Class Handles the the outputs of buttons and connects database. @Author: Nickolas
@@ -26,11 +40,10 @@ public class ProductionLineController {
 
   static Connection conn = null;
   private ObservableList<Product> prods;
-  private int prodsIndex = 0;
   private ProductionRec productRec;
   private Employee myEmployee;
   ArrayList<ProductionRec> prodRecordArray;
-  //  static PreparedStatement preparedStatement;
+
 
   /** Method that starts the connection between the controller and the database. */
   public void initializeDB() {
@@ -108,6 +121,9 @@ public class ProductionLineController {
 
   @FXML private PasswordField pfPassword;
 
+  @FXML
+  private Label lbl_3CharError;
+
   @FXML private Button btnCreateAccount;
 
   /** add product button on production line tab. */
@@ -134,27 +150,63 @@ public class ProductionLineController {
    */
   @FXML
   void addProduct(MouseEvent event) throws SQLException {
+
     lvChooseProduct.getItems().clear();
     String prodName = tfProductName.getText();
     String manufacturer = tfManufacturer.getText();
     ItemType type = choiceAddProduct.getValue();
 
-    String productQuery = "INSERT INTO PRODUCT(NAME, TYPE, MANUFACTURER) VALUES (?,?,?)";
+    if (prodName.isEmpty()) {
+      JFrame frame = new JFrame("");
+      JOptionPane.showMessageDialog(
+          frame.getContentPane(),
+          "Product Name Field is Empty\n" + "Product not Added.",
+          "Empty Field",
+          JOptionPane.ERROR_MESSAGE);
 
-    PreparedStatement addProduct = conn.prepareStatement(productQuery);
-    addProduct.setString(1, prodName);
-    addProduct.setString(2, type.toString());
-    addProduct.setString(3, manufacturer);
-    addProduct.executeUpdate();
+      if (manufacturer.isEmpty()) {
+        JFrame frame1 = new JFrame("");
+        JOptionPane.showMessageDialog(
+            frame1.getContentPane(),
+            "Manufacturer Field is Empty\n" + "Product not Added.",
+            "Empty Field",
+            JOptionPane.ERROR_MESSAGE);
+        }
 
-    tfProductName.clear();
-    tfManufacturer.clear();
-    choiceAddProduct.getSelectionModel().clearSelection();
+        if (String.valueOf(type).equals("null")) {
+          JFrame frame2 = new JFrame("");
+          JOptionPane.showMessageDialog(
+              frame2.getContentPane(),
+              "Product Type not selected\n" + "Product not Added.",
+              "Empty Field",
+              JOptionPane.ERROR_MESSAGE);
+        }
+      }else {
 
-    loadProductList();
+      if (manufacturer.length() >= 3) {
+        lbl_3CharError.setText("");
 
-    System.out.println("Product Added");
-  }
+        String productQuery = "INSERT INTO PRODUCT(NAME, TYPE, MANUFACTURER) VALUES (?,?,?)";
+
+        PreparedStatement addProduct =
+            conn.prepareStatement(productQuery, Statement.RETURN_GENERATED_KEYS);
+        addProduct.setString(1, prodName);
+        addProduct.setString(2, type.toString());
+        addProduct.setString(3, manufacturer);
+        addProduct.executeUpdate();
+
+        tfProductName.clear();
+        tfManufacturer.clear();
+        choiceAddProduct.getSelectionModel().clearSelection();
+        prods.clear();
+        System.out.println("Product Added");
+        loadProductList();
+
+      }else{
+        lbl_3CharError.setText("Product Name Must be At least 3 Characters");
+      }
+}
+    }
 
   /**
    * Handles action when button is clicked Outputs to console.
@@ -195,7 +247,10 @@ public class ProductionLineController {
       Product productDB = new Widget(nameDB, manDB, typeDB);
       // save to observable list
       prods.add(productDB);
-      lvChooseProduct.getItems().add(prods.get(prodsIndex++));
+      lvChooseProduct.getItems().clear();
+      for (Product products : prods) {
+        lvChooseProduct.getItems().add(products);
+      }
     }
   }
 
