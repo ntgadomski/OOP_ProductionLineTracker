@@ -5,8 +5,6 @@ package productionlinetracker;
  * Also utilizes media control class @Author Nickolas Gadomski
  */
 public class MoviePlayer extends Product implements MultimediaControl {
-  private final Screen screen;
-  private final MonitorType monitorType;
 
   /**
    * Constructor that creates audio player product with given parameters.
@@ -18,8 +16,6 @@ public class MoviePlayer extends Product implements MultimediaControl {
    */
   public MoviePlayer(String name, String manufacturer, Screen screen, MonitorType monitorType) {
     super(name, manufacturer, ItemType.VISUAL);
-    this.screen = screen;
-    this.monitorType = monitorType;
   }
 
   /** Media controller method for play movie. */

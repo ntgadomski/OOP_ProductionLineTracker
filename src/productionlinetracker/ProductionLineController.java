@@ -14,36 +14,42 @@ import java.util.Properties;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+
 import javafx.scene.control.Button;
+
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+
 import javafx.scene.control.TextArea;
+
 import javafx.scene.control.TextField;
-import javafx.scene.control.Label;
+
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  * Controller Class Handles the the outputs of buttons and connects database. @Author: Nickolas
  * Gadomski
  */
+@SuppressWarnings("ALL")
 public class ProductionLineController {
 
   /** Class level fields to be used throughout the code. */
-  static Statement stmt = null;
+  Statement stmt = null;
 
-  static Connection conn = null;
+  Connection conn = null;
   private ObservableList<Product> prods;
-  private ProductionRec productRec;
   private Employee myEmployee;
   ArrayList<ProductionRec> prodRecordArray;
-
 
   /** Method that starts the connection between the controller and the database. */
   public void initializeDB() {
@@ -121,8 +127,7 @@ public class ProductionLineController {
 
   @FXML private PasswordField pfPassword;
 
-  @FXML
-  private Label lbl_3CharError;
+  @FXML private Label lbl3CharError;
 
   @FXML private Button btnCreateAccount;
 
@@ -151,7 +156,7 @@ public class ProductionLineController {
   @FXML
   void addProduct(MouseEvent event) throws SQLException {
 
-    lvChooseProduct.getItems().clear();
+    //    lvChooseProduct.getItems().clear();
     String prodName = tfProductName.getText();
     String manufacturer = tfManufacturer.getText();
     ItemType type = choiceAddProduct.getValue();
@@ -171,20 +176,20 @@ public class ProductionLineController {
             "Manufacturer Field is Empty\n" + "Product not Added.",
             "Empty Field",
             JOptionPane.ERROR_MESSAGE);
-        }
+      }
 
-        if (String.valueOf(type).equals("null")) {
-          JFrame frame2 = new JFrame("");
-          JOptionPane.showMessageDialog(
-              frame2.getContentPane(),
-              "Product Type not selected\n" + "Product not Added.",
-              "Empty Field",
-              JOptionPane.ERROR_MESSAGE);
-        }
-      }else {
+      if (String.valueOf(type).equals("null")) {
+        JFrame frame2 = new JFrame("");
+        JOptionPane.showMessageDialog(
+            frame2.getContentPane(),
+            "Product Type not selected\n" + "Product not Added.",
+            "Empty Field",
+            JOptionPane.ERROR_MESSAGE);
+      }
+    } else {
 
       if (manufacturer.length() >= 3) {
-        lbl_3CharError.setText("");
+        lbl3CharError.setText("");
 
         String productQuery = "INSERT INTO PRODUCT(NAME, TYPE, MANUFACTURER) VALUES (?,?,?)";
 
@@ -194,6 +199,7 @@ public class ProductionLineController {
         addProduct.setString(2, type.toString());
         addProduct.setString(3, manufacturer);
         addProduct.executeUpdate();
+        addProduct.close();
 
         tfProductName.clear();
         tfManufacturer.clear();
@@ -202,11 +208,11 @@ public class ProductionLineController {
         System.out.println("Product Added");
         loadProductList();
 
-      }else{
-        lbl_3CharError.setText("Product Name Must be At least 3 Characters");
+      } else {
+        lbl3CharError.setText("Manufacturer(at least 3 characters)");
       }
-}
     }
+  }
 
   /**
    * Handles action when button is clicked Outputs to console.
@@ -217,17 +223,46 @@ public class ProductionLineController {
   void record(MouseEvent event) throws SQLException {
     taProdLog.clear();
     Product selectList = (Product) lvChooseProduct.getSelectionModel().getSelectedItem();
-    String quantitys = String.valueOf(cbShowProd.getValue());
-    int numberProduced = Integer.parseInt(quantitys); // comes from combo box UI
-    ArrayList<ProductionRec> productRecords = new ArrayList();
-    for (int runProduct = 0; runProduct < numberProduced; runProduct++) {
-      productRec = new ProductionRec(selectList, runProduct);
-      productRecords.add(productRec);
+    String quantityS = String.valueOf(cbShowProd.getValue());
+    int numberProduced = Integer.parseInt(quantityS); // comes from combo box UI
+
+    try {
+      if (selectList.equals("null")) {
+        throw new NullPointerException();
+      } else {
+        ArrayList<ProductionRec> productRecords = new ArrayList();
+        for (int runProduct = 0; runProduct < numberProduced; runProduct++) {
+          ProductionRec productRec = new ProductionRec(selectList, runProduct);
+          productRecords.add(productRec);
+        }
+        try {
+          if (myEmployee.getUsername().isEmpty() && myEmployee.getPassword().isEmpty()) {
+            throw new NullPointerException();
+          } else {
+            addToProductionDB(productRecords);
+            loadProductionLog();
+            System.out.println("Product Recorded");
+          }
+        } catch (NullPointerException e) {
+          JFrame frame = new JFrame("");
+          JOptionPane.showMessageDialog(
+              frame.getContentPane(),
+              " Go to employee tab and create account to record products"
+                  + "\n"
+                  + "Employee Account is not created.",
+              "Account Not Created",
+              JOptionPane.ERROR_MESSAGE);
+        }
+      }
+    } catch (NullPointerException e) {
+      JFrame frame = new JFrame("");
+      JOptionPane.showMessageDialog(
+          frame.getContentPane(),
+          " Select Product from List" + "\n" + "Product not selected.",
+          "No Selection",
+          JOptionPane.ERROR_MESSAGE);
     }
-    addToProductionDB(productRecords);
-    loadProductionLog();
     showProduction();
-    System.out.println("Product Recorded");
   }
 
   /**
@@ -252,6 +287,7 @@ public class ProductionLineController {
         lvChooseProduct.getItems().add(products);
       }
     }
+    rs.close();
   }
 
   /**
@@ -276,6 +312,7 @@ public class ProductionLineController {
       // save to observable list
       prodRecordArray.add(productionDB);
     }
+    rs.close();
   }
 
   /**
@@ -298,6 +335,7 @@ public class ProductionLineController {
       addRecToDB.setString(4, myEmployee.username);
       addRecToDB.executeUpdate();
     }
+    addRecToDB.close();
   }
 
   /** Method to set up the columns for the table view. */
@@ -333,6 +371,7 @@ public class ProductionLineController {
     addEmployee.setString(3, myEmployee.username);
     addEmployee.setString(4, myEmployee.email);
     addEmployee.executeUpdate();
+    addEmployee.close();
 
     tfProductName.clear();
     tfManufacturer.clear();

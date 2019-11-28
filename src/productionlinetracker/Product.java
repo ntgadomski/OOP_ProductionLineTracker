@@ -17,7 +17,7 @@ public abstract class Product implements Item {
    * @param manufacturer product company
    * @param type product type
    */
-  public Product(String prodName, String manufacturer, ItemType type) {
+  Product(String prodName, String manufacturer, ItemType type) {
     this.prodName = prodName;
     this.manufacturer = manufacturer;
     this.type = type;

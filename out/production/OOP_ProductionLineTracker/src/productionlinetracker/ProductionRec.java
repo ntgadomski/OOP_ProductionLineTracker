@@ -5,6 +5,7 @@ import java.util.Date;
 /**
  * Production record class used to store updated data into the database @Author: Nickolas Gadomski.
  */
+@SuppressWarnings("ALL")
 public class ProductionRec {
 
   private int productionNum;
@@ -54,7 +55,6 @@ public class ProductionRec {
             + product.getType().getItem()
             + String.format("%05d", counter);
     this.productName = product.getProdName();
-
   }
 
   /**
@@ -63,7 +63,16 @@ public class ProductionRec {
    * @return Date produceDate
    */
   public Date getProduceDate() {
-    return produceDate;
+    return new Date(produceDate.getTime());
+  }
+
+  /**
+   * Mutator sets local produce Date field.
+   *
+   * @param produceDate Date produceDate
+   */
+  public void setProduceDate(Date produceDate) {
+    this.produceDate = new Date(produceDate.getTime());
   }
 
   /**
@@ -73,6 +82,15 @@ public class ProductionRec {
    */
   public String getProductName() {
     return productName;
+  }
+
+  /**
+   * Mutator sets local production name field.
+   *
+   * @param productName String productName
+   */
+  public void setProductName(String productName) {
+    this.productName = productName;
   }
 
   /**
@@ -128,14 +146,6 @@ public class ProductionRec {
   public void setSerialNum(String serialNum) {
     this.serialNum = serialNum;
   }
-
-  // public Date getProdDate() {
-  // return produceDate;
-  // }
-
-  // public void setProdDate(Date produceDate) {
-  // this.produceDate = produceDate;
-  // }
 
   /**
    * Format String method.

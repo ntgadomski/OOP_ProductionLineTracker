@@ -1,34 +1,35 @@
 package productionlinetracker;
 
-import javax.swing.*;
-import java.awt.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
-/** Eployee class allows the user to create an employee account. @Author: Nickolas Gadomski */
+/** Employee class allows the user to create an employee account. @Author: Nickolas Gadomski */
+@SuppressWarnings("ALL")
 public class Employee {
-  /** Class level fields to be used throughout the code */
-  StringBuilder name;
+  /** Class level fields to be used throughout the code. */
+  private StringBuilder name;
 
   String username;
-  String password;
+  private String password;
   String email;
 
   /**
-   * Employee class constructor for local fields
+   * Employee class constructor for local fields.
    *
    * @param name local String name
    * @param password local String password
    */
   Employee(String name, String password) {
-    StringBuilder sBName = new StringBuilder(name);
+    StringBuilder sbName = new StringBuilder(name);
     StringBuilder defaultUsername = new StringBuilder("default");
     StringBuilder defaultEmail = new StringBuilder("user");
-    this.name = sBName;
+    this.name = sbName;
     this.password = password;
-    if (checkName(sBName)) {
-      setUsername(sBName);
-      setEmail(sBName);
+    if (checkName(sbName)) {
+      setUsername(sbName);
+      setEmail(sbName);
     } else {
       JFrame frame = new JFrame("");
       JOptionPane.showMessageDialog(
@@ -52,7 +53,7 @@ public class Employee {
           JOptionPane.ERROR_MESSAGE);
       setUsername(defaultUsername);
     }
-    }
+  }
 
   /**
    * Method to check if the name entered by the user is valid.
@@ -62,11 +63,11 @@ public class Employee {
    */
   private boolean checkName(StringBuilder name) {
     String[] splitArray = name.toString().split(" ");
-    return splitArray.length == 1 ? false : true;
+    return splitArray.length != 1;
   }
 
   /**
-   * Method to set the username from the entered name by the user
+   * Method to set the username from the entered name by the user.
    *
    * @param name local StringBuilder name
    */
@@ -80,7 +81,7 @@ public class Employee {
   }
 
   /**
-   * Method to set the email from the entered name by the user
+   * Method to set the email from the entered name by the user.
    *
    * @param name local StringBuilder name
    */
@@ -107,7 +108,34 @@ public class Employee {
   }
 
   /**
-   * Format String Method
+   * Accessor for local name field.
+   *
+   * @return StringBuilder name
+   */
+  public StringBuilder getName() {
+    return name;
+  }
+
+  /**
+   * Accessor for local password field.
+   *
+   * @return String password
+   */
+  public String getPassword() {
+    return password;
+  }
+
+  /**
+   * Accessor for local user name field.
+   *
+   * @return String username
+   */
+  public String getUsername() {
+    return username;
+  }
+
+  /**
+   * Format String Method.
    *
    * @return formatted String
    */
