@@ -323,4 +323,9 @@ Java Documentation:
 
 Class Diagram:
 
+![Class Diagram](https://github.com/spudnick79/OOP_ProductionLineTracker/blob/master/src/ClassDiagramOOP.png)
+
+DataBase Visualization:
+
+![DataBase Tables](https://github.com/spudnick79/OOP_ProductionLineTracker/blob/master/src/Products_DataBase_Tables.png)
 
